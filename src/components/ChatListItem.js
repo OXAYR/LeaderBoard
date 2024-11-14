@@ -15,7 +15,7 @@ import {
 
 const ChatListItem = ({item}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity style={styles.chatItemContainer}>
       <ImageBackground
         source={backgroundImage}
         style={styles.image}
@@ -28,6 +28,10 @@ const ChatListItem = ({item}) => {
             <Text numberOfLines={1} style={styles.text}>
               {item?.message}
             </Text>
+          </View>
+          <View style={styles.messageInfo}>
+            <Text style={styles.unseenMessages}>{item?.unseenMessages}</Text>
+            <Text style={styles.time}>{item?.timeStamp}</Text>
           </View>
         </View>
       </ImageBackground>
@@ -69,6 +73,31 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
+  },
+  messageInfo: {
+    flexDirection: 'column',
+    height: heightPercentageToDP(5),
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+  },
+  unseenMessages: {
+    backgroundColor: '#529D4A82',
+    color: 'white',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    fontSize: widthPercentageToDP(3.2),
+    width: heightPercentageToDP(3),
+    height: heightPercentageToDP(3),
+    borderRadius: widthPercentageToDP(3),
+  },
+  time: {
+    fontSize: widthPercentageToDP(2.5),
+    textAlignVertical: 'bottom',
+    alignSelf: 'flex-end',
+  },
+  chatItemContainer: {
+    width: widthPercentageToDP(85),
+    alignSelf: 'center',
   },
 });
 

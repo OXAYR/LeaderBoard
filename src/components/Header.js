@@ -7,14 +7,16 @@ import {
 import backIcon from '../assets/icons/back-icon.png';
 import backgroundImage from '../assets/Bg.png';
 
-const Header = () => {
+const Header = ({onSendButtonPress, onbackButtonPress}) => {
   return (
     <View style={styles.headerContainer}>
-      <View style={styles.backButton}>
+      <TouchableOpacity style={styles.backButton} onPress={onbackButtonPress}>
         <Image source={backIcon} style={styles.backIcon} />
-      </View>
+      </TouchableOpacity>
       <View style={styles.headerButtonContainer}>
-        <TouchableOpacity style={styles.headerButton}>
+        <TouchableOpacity
+          style={styles.headerButton}
+          onPress={onSendButtonPress}>
           <Text style={styles.buttonText}>Send to all</Text>
         </TouchableOpacity>
       </View>
@@ -69,6 +71,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: widthPercentageToDP(5),
     height: heightPercentageToDP(5),
+    width: widthPercentageToDP(85),
+    alignSelf: 'center',
   },
 });
 
