@@ -1,115 +1,74 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
-  ImageBackground,
-  StyleSheet,
-  FlatList,
-  StatusBar,
   View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  Image,
 } from 'react-native';
-
-import ChatListItem from './src/components/ChatListItem';
 import backgroundImage from './src/assets/Bg.png';
-import Header from './src/components/Header';
-import {widthPercentageToDP} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
+import downArrow from './src/assets/icons/down-arrow.png';
 
 const App = () => {
-  const DATA = [
-    {
-      message:
-        'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba sad asd as dasd asd as da sad',
-      name: 'First Item',
-      unseenMessages: '05',
-      timeStamp: '10:00 AM',
-    },
-    {
-      message: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      name: 'Second Item',
-      unseenMessages: '05',
-      timeStamp: ' 10:00 AM',
-    },
-    {
-      message: '58694a0f-3da1-471f-bd96-145571e29d72',
-      name: 'Third Item',
-      unseenMessages: '05',
-      timeStamp: ' 10:00 AM',
-    },
-    {
-      message:
-        'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba sad asd as dasd asd as da sad',
-      name: 'First Item',
-      unseenMessages: '05',
-      timeStamp: ' 10:00 AM',
-    },
-    {
-      message: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      name: 'Second Item',
-      unseenMessages: '05',
-      timeStamp: ' 10:00 AM',
-    },
-    {
-      message: '58694a0f-3da1-471f-bd96-145571e29d72',
-      name: 'Third Item',
-      unseenMessages: '05',
-      timeStamp: ' 10:00 AM',
-    },
-    {
-      message:
-        'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba sad asd as dasd asd as da sad',
-      name: 'First Item',
-      unseenMessages: '05',
-      timeStamp: ' 10:00 AM',
-    },
-    {
-      message: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      name: 'Second Item',
-      unseenMessages: '05',
-      timeStamp: ' 10:00 AM',
-    },
-    {
-      message: '58694a0f-3da1-471f-bd96-145571e29d72',
-      name: 'Third Item',
-      unseenMessages: '05',
-      timeStamp: ' 10:00 AM',
-    },
-  ];
-
-  const handleSendButtonPress = () => {
-    console.log('semd button press');
-  };
-
-  const handleBackButtonPress = () => {
-    console.log('back button press');
-  };
-
   return (
-    <>
-      <StatusBar hidden={true} />
-      <ImageBackground
-        style={styles.image}
-        source={backgroundImage}
-        resizeMode="cover">
-        <View style={styles.overlay}>
-          <Header
-            onSendButtonPress={handleSendButtonPress}
-            onbackButtonPress={handleBackButtonPress}
-          />
-          <FlatList
-            data={DATA}
-            renderItem={({item}) => <ChatListItem item={item} />}
-            keyExtractor={(item, index) => index.toString()}
-          />
+    <ImageBackground
+      style={styles.image}
+      source={backgroundImage}
+      resizeMode="cover">
+      <View style={styles.overlay}>
+        <View style={styles.headerContainer}>
+          <TouchableOpacity style={styles.headerButtonContainer}>
+            <Text style={styles.headerText}>Profko Ltd </Text>
+            <Image style={styles.downArrowIcon} source={downArrow} />
+          </TouchableOpacity>
+          <View style={styles.profileWrapper}>
+            <Image style={styles.profile} source={backgroundImage} />
+          </View>
         </View>
-      </ImageBackground>
-    </>
+      </View>
+    </ImageBackground>
   );
 };
-
 const styles = StyleSheet.create({
   image: {
     flex: 1,
   },
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: widthPercentageToDP(5),
+  },
+  profile: {
+    width: widthPercentageToDP(13),
+    height: heightPercentageToDP(6),
+    borderRadius: widthPercentageToDP(8.5),
+  },
+  downArrowIcon: {
+    width: widthPercentageToDP(2),
+    height: heightPercentageToDP(1),
+  },
+  headerText: {
+    backgroundColor: 'red',
+    color: 'white',
+    textAlign: 'right',
+  },
+  headerButtonContainer: {
+    height: heightPercentageToDP(8),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  profileWrapper: {
+    width: widthPercentageToDP(1),
   },
 });
 
