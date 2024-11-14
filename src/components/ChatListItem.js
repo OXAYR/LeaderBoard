@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import backgroundImage from '../assets/blur-Bg.png';
 import {
   heightPercentageToDP,
@@ -8,21 +15,23 @@ import {
 
 const ChatListItem = ({item}) => {
   return (
-    <ImageBackground
-      source={backgroundImage}
-      style={styles.image}
-      imageStyle={styles.imageBorderRadius}>
-      <View style={styles.container}>
-        <Image source={backgroundImage} style={styles.profile} />
+    <TouchableOpacity>
+      <ImageBackground
+        source={backgroundImage}
+        style={styles.image}
+        imageStyle={styles.imageBorderRadius}>
+        <View style={styles.container}>
+          <Image source={backgroundImage} style={styles.profile} />
 
-        <View style={styles.userInfo}>
-          <Text style={styles.text}>{item?.name}</Text>
-          <Text numberOfLines={1} style={styles.text}>
-            {item?.message}
-          </Text>
+          <View style={styles.userInfo}>
+            <Text style={styles.text}>{item?.name}</Text>
+            <Text numberOfLines={1} style={styles.text}>
+              {item?.message}
+            </Text>
+          </View>
         </View>
-      </View>
-    </ImageBackground>
+      </ImageBackground>
+    </TouchableOpacity>
   );
 };
 

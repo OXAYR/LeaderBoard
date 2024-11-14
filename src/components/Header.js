@@ -1,40 +1,74 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {widthPercentageToDP} from 'react-native-responsive-screen';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
+import backIcon from '../assets/icons/back-icon.png';
+import backgroundImage from '../assets/Bg.png';
 
 const Header = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.view1}>View 1</View>
-      <View style={styles.view2}>View 2</View>
-      <View style={styles.view3}>View 3</View>
+    <View style={styles.headerContainer}>
+      <View style={styles.backButton}>
+        <Image source={backIcon} style={styles.backIcon} />
+      </View>
+      <View style={styles.headerButtonContainer}>
+        <TouchableOpacity style={styles.headerButton}>
+          <Text style={styles.buttonText}>Send to all</Text>
+        </TouchableOpacity>
+      </View>
+      <Image style={styles.profile} source={backgroundImage} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  view1: {
-    width: widthPercentageToDP(20), // Increased width for visibility
-    height: 50, // Set a height to make it more visible
-    backgroundColor: 'red', // Set background color to make it stand out
-    marginBottom: 10, // Add some spacing
+  buttonText: {
+    color: 'white',
+    fontSize: widthPercentageToDP(4),
+    fontWeight: 'bold',
   },
-  view2: {
-    width: widthPercentageToDP(50), // Increased width for visibility
-    height: 50,
-    backgroundColor: 'blue',
-    marginBottom: 10,
+  backButton: {
+    width: widthPercentageToDP(13),
+    height: heightPercentageToDP(6),
+    backgroundColor: '#3263B8',
+    borderColor: '#508AFE',
+    borderRadius: widthPercentageToDP(8.5),
+    borderRightWidth: widthPercentageToDP(0.5),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  view3: {
-    width: widthPercentageToDP(20),
-    height: 50,
-    backgroundColor: 'green',
-    marginBottom: 10,
+  backIcon: {
+    width: widthPercentageToDP(2),
+    height: heightPercentageToDP(2),
   },
-  container: {
+
+  headerButtonContainer: {
+    width: widthPercentageToDP(50),
+    height: heightPercentageToDP(8),
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerButton: {
+    backgroundColor: '#508AFE',
+    paddingHorizontal: widthPercentageToDP(8),
+    paddingVertical: heightPercentageToDP(2),
+    borderRadius: widthPercentageToDP(8),
+  },
+  profile: {
+    width: widthPercentageToDP(13),
+    height: heightPercentageToDP(6),
+    borderRadius: widthPercentageToDP(8.5),
+  },
+  headerContainer: {
+    marginVertical: heightPercentageToDP(5),
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    gap: widthPercentageToDP(2),
+    alignItems: 'center',
+    gap: widthPercentageToDP(5),
+    height: heightPercentageToDP(5),
   },
 });
 
